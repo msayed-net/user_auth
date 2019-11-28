@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Depends on dio plugin
+* Added main methods [login, check, logout]
