@@ -1,3 +1,3 @@
 # user_auth
 
-Handy flutter that help with user-backend-auth.
+Handy flutter plugin that help with user-backend-auth.
