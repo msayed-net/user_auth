@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:user_auth/user_auth.dart';
 
-void main() => runApp(MyApp());
+UserAuth user = new UserAuth();
+var activeUser, checkedUser, loggedOut = false;
+Future main() async {
+  await user.init('https://mazeg.adortyyy.com/api/', 'email', 'password');
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -12,32 +15,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await UserAuth.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    loggedOut = false;
   }
 
   @override
@@ -45,10 +26,50 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Plugin Example'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              RaisedButton(
+                child: Text('Login'),
+                onPressed: () async {
+                  activeUser = await user.login('vendor@test.com', '123456');
+                  loggedOut = false;
+                  setState(() {});
+                },
+              ),
+              Text('login..'),
+              activeUser != null
+                  ? Text(activeUser.toString())
+                  : Text(user.placeHolder()),
+              Divider(height: 40),
+              RaisedButton(
+                child: Text('Check'),
+                onPressed: () async {
+                  checkedUser =
+                      await user.check('Bearer ', activeUser['api_token']);
+                  setState(() {});
+                },
+              ),
+              Text('check..'),
+              checkedUser != null
+                  ? Text(checkedUser.toString())
+                  : Text(user.placeHolder()),
+              Divider(height: 40),
+              RaisedButton(
+                child: Text('Logout'),
+                onPressed: () async {
+                  loggedOut =
+                      await user.logout('Bearer ', activeUser['api_token']);
+                  activeUser = checkedUser = null;
+                  setState(() {});
+                },
+              ),
+              Text('logout..'),
+              Text(loggedOut.toString()),
+            ],
+          ),
         ),
       ),
     );
