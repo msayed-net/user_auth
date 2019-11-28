@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:user_auth/user_auth.dart';
 
+// ---- user instance ----- //
 UserAuth user = new UserAuth();
+
+// ---- vars ---- //
 var activeUser, checkedUser, loggedOut = false;
+
 Future main() async {
+  // ---- user init ---- //
   await user.init('https://mazeg.adortyyy.com/api/', 'email', 'password');
+
   runApp(MyApp());
 }
 
