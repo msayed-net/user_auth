@@ -1,3 +1,7 @@
-## 0.0.41
+## 0.1.0
 
-* Code Prettify
+* Support it's very first methods
+
+## Next
+* Add Local Storage Instance
+* Upgrade things
