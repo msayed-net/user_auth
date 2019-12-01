@@ -1,4 +1,3 @@
-## 0.0.1
+## 0.0.3
 
-* Depends on dio plugin
-* Added main methods [login, check, logout]
+* Update Plug-In HomePage
