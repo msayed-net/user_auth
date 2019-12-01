@@ -30,7 +30,7 @@ var activeUser = await user.login('test@something.com', '123');
 var checkedUser = await user.check('Bearer ', activeUser['api_token']); // change 'Bearer ' and api_token with your own parameter
 
 // check
-var logout = await user.check('Bearer ', activeUser['api_token']); 
+var logout = await user.logout('Bearer ', activeUser['api_token']); 
 ```
 
 ## change log
