@@ -11,18 +11,24 @@ class UserAuth {
   /// User : init
   ///------------------------------------
   /// initialize variables
-  init(apiBaseUrl, username, password) {
+  init({
+    @required String apiBaseUrl,
+    @required String userNameParam,
+    @required String passwordParam,
+  }) {
     baseUrl = apiBaseUrl;
-    userName = username;
-    userPass = password;
+    userName = userNameParam;
+    userPass = passwordParam;
   }
 
   ///------------------------------------
   /// User : Login
   ///------------------------------------
   /// return user data
-  Future<dynamic> login(
-      {@required String username, @required String password}) async {
+  Future<dynamic> login({
+    @required String username,
+    @required String password,
+  }) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
 
@@ -48,7 +54,10 @@ class UserAuth {
   /// User : Check
   ///------------------------------------
   /// return user data
-  Future<dynamic> check({@required String type, @required String token}) async {
+  Future<dynamic> check({
+    @required String type,
+    @required String token,
+  }) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
     dio.options.headers['Authorization'] = type + token;
@@ -69,8 +78,10 @@ class UserAuth {
   /// User : Logout
   ///------------------------------------
   /// return user data
-  Future<dynamic> logout(
-      {@required String type, @required String token}) async {
+  Future<dynamic> logout({
+    @required String type,
+    @required String token,
+  }) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
     dio.options.headers['Authorization'] = type + token;
