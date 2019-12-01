@@ -1,6 +1,6 @@
 # user_auth
 
-Handy flutter plugin that help with user-backend-auth, written in pure dart code, in top of `Dio` package.
+Handy flutter plugin that help with user-backend-auth, written in pure dart code, in top of `http` package.
 
 ## usage
 * import `package:user_auth/user_auth.dart`.
