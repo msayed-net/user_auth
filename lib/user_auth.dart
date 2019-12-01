@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-// FIXME: http implementation error
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -40,7 +38,7 @@ class UserAuth {
           userPass: password,
         },
       );
-
+      print((response.request));
       // ---- Response ---- //
       var data = json.decode(response.body);
       if (response.statusCode == 200) {
