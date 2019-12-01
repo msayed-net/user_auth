@@ -1,8 +1,9 @@
 name: user_auth
 description: Flutter user authentication with back-end handler.
 version: 0.0.1
-author: Mohamed Sayed
-homepage: github.msayed.net
+authors: 
+- Creator <creative.mohamed.sayed@gmail.com>
+homepage: http://github.msayed.net
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -11,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   # shared_preferences: 0.5.4+6
-  dio: 2.2.2
+  dio: ^2.2.2
 
 dev_dependencies:
   flutter_test:
