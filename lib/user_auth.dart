@@ -1,9 +1,11 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
+// FIXME: http implementation error
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class UserAuth {
   // ? vars ? //
-  Dio dio = new Dio();
   String baseUrl;
   String userName, userPass;
 
@@ -29,25 +31,27 @@ class UserAuth {
     @required String username,
     @required String password,
   }) async {
-    // ---- API Base Url ---- //
-    dio.options.baseUrl = baseUrl;
+    try {
+      // ---- API Call ---- //
+      var response = await http.post(
+        baseUrl + "/user/login",
+        body: {
+          userName: username,
+          userPass: password,
+        },
+      );
 
-    // ---- Data ---- //
-    FormData formData = FormData.from({
-      userName: username,
-      userPass: password,
-    });
-
-    // ---- API Call ---- //
-    var response = await dio.post("/user/login", data: formData);
-
-    // ---- Response ---- //
-    if (response.statusCode == 200) {
-      print(response.data['user']);
-    } else {
-      print(response.data);
+      // ---- Response ---- //
+      var data = json.decode(response.body);
+      if (response.statusCode == 200) {
+        print(data['user']);
+      } else {
+        print(data);
+      }
+      return data['user'];
+    } catch (e) {
+      print('Error: ' + e.toString());
     }
-    return response.data['user'];
   }
 
   ///------------------------------------
@@ -58,20 +62,23 @@ class UserAuth {
     @required String type,
     @required String token,
   }) async {
-    // ---- API Base Url ---- //
-    dio.options.baseUrl = baseUrl;
-    dio.options.headers['Authorization'] = type + token;
+    try {
+      // ---- API Call ---- //
+      var response = await http.post(baseUrl + "/user/details", headers: {
+        'Authorization': type + token,
+      });
 
-    // ---- API Call ---- //
-    var response = await dio.post("/user/details");
-
-    // ---- Response ---- //
-    if (response.statusCode == 200) {
-      print(response.data['user']);
-    } else {
-      print(response.data);
+      // ---- Response ---- //
+      var data = json.decode(response.body);
+      if (response.statusCode == 200) {
+        print(data['user']);
+      } else {
+        print(data);
+      }
+      return data['user'];
+    } catch (e) {
+      print('Error: ' + e.toString());
     }
-    return response.data['user'];
   }
 
   ///------------------------------------
@@ -82,20 +89,20 @@ class UserAuth {
     @required String type,
     @required String token,
   }) async {
-    // ---- API Base Url ---- //
-    dio.options.baseUrl = baseUrl;
-    dio.options.headers['Authorization'] = type + token;
+    try {
+      // ---- API Call ---- //
+      var response = await http.post(baseUrl + "/user/logout", headers: {
+        'Authorization': type + token,
+      });
 
-    // ---- API Call ---- //
-    var response = await dio.post("/user/logout");
-
-    // ---- Response ---- //
-    if (response.statusCode == 200) {
-      print(response.data);
-      return true;
-    } else {
-      print(response.data);
-      return false;
+      // ---- Response ---- //
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print('Error: ' + e.toString());
     }
   }
 
