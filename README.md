@@ -21,13 +21,23 @@ import 'package:user_auth/user_auth.dart';
 UserAuth user = new UserAuth();
 
 // init
-await user.init('https://example.com/api/', 'email', 'password');
+await user.init(
+    apiBaseUrl: 'https://mazeg.adortyyy.com/api/',
+    userNameParam: 'email',
+    passwordParam: 'password',
+  );
 
 // login
-var activeUser = await user.login('test@something.com', '123');
+var activeUser = await user.login(
+                    username: 'vendor@test.com',
+                    password: '123456',
+                  );
 
 // check
-var checkedUser = await user.check('Bearer ', activeUser['api_token']); // change 'Bearer ' and api_token with your own parameter
+var checkedUser = await user.check(
+                    type: 'Bearer ',
+                    token: activeUser['api_token'],
+                  ); // change 'Bearer ' and api_token with your own parameter
 
 // check
 var logout = await user.logout('Bearer ', activeUser['api_token']); 

@@ -13,7 +13,11 @@ var activeUser, checkedUser, loggedOut = false;
 
 Future main() async {
   // ---- user init ---- //
-  await user.init('https://mazeg.adortyyy.com/api/', 'email', 'password');
+  await user.init(
+    apiBaseUrl: 'https://mazeg.adortyyy.com/api/',
+    userNameParam: 'email',
+    passwordParam: 'password',
+  );
 
   runApp(MyApp());
 }
@@ -43,7 +47,10 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text('Login'),
                 onPressed: () async {
-                  activeUser = await user.login('vendor@test.com', '123456');
+                  activeUser = await user.login(
+                    username: 'vendor@test.com',
+                    password: '123456',
+                  );
                   loggedOut = false;
                   setState(() {});
                 },
@@ -56,8 +63,10 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text('Check'),
                 onPressed: () async {
-                  checkedUser =
-                      await user.check('Bearer ', activeUser['api_token']);
+                  checkedUser = await user.check(
+                    type: 'Bearer ',
+                    token: activeUser['api_token'],
+                  );
                   setState(() {});
                 },
               ),
@@ -69,8 +78,10 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text('Logout'),
                 onPressed: () async {
-                  loggedOut =
-                      await user.logout('Bearer ', activeUser['api_token']);
+                  loggedOut =  await user.logout(
+                    type: 'Bearer ',
+                    token: activeUser['api_token'],
+                  );
                   activeUser = checkedUser = null;
                   setState(() {});
                 },
@@ -84,5 +95,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
 ```
