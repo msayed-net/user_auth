@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class UserAuth {
   // ? vars ? //
@@ -20,14 +21,15 @@ class UserAuth {
   /// User : Login
   ///------------------------------------
   /// return user data
-  Future<dynamic> login(name, pass) async {
+  Future<dynamic> login(
+      {@required String username, @required String password}) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
 
     // ---- Data ---- //
     FormData formData = FormData.from({
-      userName: name,
-      userPass: pass,
+      userName: username,
+      userPass: password,
     });
 
     // ---- API Call ---- //
@@ -46,7 +48,7 @@ class UserAuth {
   /// User : Check
   ///------------------------------------
   /// return user data
-  Future<dynamic> check(type, token) async {
+  Future<dynamic> check({@required String type, @required String token}) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
     dio.options.headers['Authorization'] = type + token;
@@ -67,7 +69,8 @@ class UserAuth {
   /// User : Logout
   ///------------------------------------
   /// return user data
-  Future<dynamic> logout(type, token) async {
+  Future<dynamic> logout(
+      {@required String type, @required String token}) async {
     // ---- API Base Url ---- //
     dio.options.baseUrl = baseUrl;
     dio.options.headers['Authorization'] = type + token;
