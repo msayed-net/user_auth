@@ -1,6 +1,6 @@
 name: user_auth
-description: Flutter user authentication with back-end handler.
-version: 0.0.4
+description: Handy flutter plugin that help with user-backend-auth, written in pure dart code, in top of Dio package.
+version: 0.0.41
 authors: 
 - Creator <creative.mohamed.sayed@gmail.com>
 homepage: https://github.com/MohamedSayed95/user_auth
