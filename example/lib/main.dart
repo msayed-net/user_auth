@@ -6,7 +6,7 @@ import 'package:user_auth/user_auth.dart';
 UserAuth user = new UserAuth();
 
 // ---- vars ---- //
-var activeUser, checkedUser, loadedUser, loggedOut = false;
+var activeUser, checkedUser, loadedUser, registeredUser, loggedOut = false;
 
 Future main() async {
   // ---- user init ---- //
@@ -83,6 +83,24 @@ class _MyAppState extends State<MyApp> {
               Text('check..'),
               checkedUser != null
                   ? Text(checkedUser.toString())
+                  : Text(user.placeHolder()),
+              Divider(height: 40),
+              RaisedButton(
+                child: Text('Register'),
+                onPressed: () async {
+                  Map form = {
+                    "email": "test@test.com",
+                    "phone": "00000000",
+                    "name": "mohamed sayed",
+                    "password": "1234567",
+                  };
+                  registeredUser = await user.register(form: form);
+                  setState(() {});
+                },
+              ),
+              Text('register..'),
+              registeredUser != null
+                  ? Text(registeredUser.toString())
                   : Text(user.placeHolder()),
               Divider(height: 40),
               RaisedButton(

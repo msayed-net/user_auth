@@ -53,7 +53,29 @@ class UserAuth {
   }
 
   ///------------------------------------
-  /// User : Check
+  /// User : Login
+  ///------------------------------------
+  /// return user data
+  Future<dynamic> register({@required Map form}) async {
+    try {
+      // ---- API Call ---- //
+      var response = await http.post(
+        baseUrl + "/user/register",
+        body: form,
+      );
+      // ---- Response ---- //
+      var data = json.decode(response.body);
+      if (prefs != null) {
+        prefs.setString('user', json.encode(data['user']));
+      }
+      return data['user'];
+    } catch (e) {
+      print('Error: ' + e.toString());
+    }
+  }
+
+  ///------------------------------------
+  /// User : Load
   ///------------------------------------
   /// return user data
   Future<dynamic> loadUser() async {
@@ -89,7 +111,6 @@ class UserAuth {
   ///------------------------------------
   /// User : Logout
   ///------------------------------------
-  /// return user data
   Future<dynamic> logout({
     @required String type,
     @required String token,

@@ -9,12 +9,12 @@ import 'package:user_auth/user_auth.dart';
 UserAuth user = new UserAuth();
 
 // ---- vars ---- //
-var activeUser, checkedUser, loadedUser, loggedOut = false;
+var activeUser, checkedUser, loadedUser, registeredUser, loggedOut = false;
 
 Future main() async {
   // ---- user init ---- //
   await user.init(
-    apiBaseUrl: 'https://example.com/api',
+    apiBaseUrl: 'https://mazeg.adortyyy.com/api',
     store: true,
   );
 
@@ -61,8 +61,8 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   activeUser = loadedUser = await user.login(
                     usernameVar: 'email',
-                    usernameVal: 'test@test.com',
-                    password: '12345678',
+                    usernameVal: 'vendor@test.com',
+                    password: '123456',
                   );
                   loggedOut = false;
                   setState(() {});
@@ -89,6 +89,24 @@ class _MyAppState extends State<MyApp> {
                   : Text(user.placeHolder()),
               Divider(height: 40),
               RaisedButton(
+                child: Text('Register'),
+                onPressed: () async {
+                  Map form = {
+                    "email" : "test@test.com",
+                    "phone" : "00000000",
+                    "name" : "mohamed sayed",
+                    "password" : "1234567",
+                  };
+                  registeredUser = await user.register(form: form);
+                  setState(() {});
+                },
+              ),
+              Text('register..'),
+              registeredUser != null
+                  ? Text(registeredUser.toString())
+                  : Text(user.placeHolder()),
+              Divider(height: 40),
+              RaisedButton(
                 child: Text('Logout'),
                 onPressed: () async {
                   loggedOut = await user.logout(
@@ -108,4 +126,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 ```

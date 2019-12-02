@@ -1,6 +1,7 @@
-## 1.0.1
+## 1.1.0
 
-* Now supports storing user into local_storage
+* new methods : `register`
+* performance optimization
 
 ## Next
 * Adding more feautres
