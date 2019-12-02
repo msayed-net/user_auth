@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserAuth {
   // ? vars ? //
   String baseUrl;
-  String userName, userPass;
+  SharedPreferences prefs;
 
   ///------------------------------------
   /// User : init
@@ -13,12 +14,13 @@ class UserAuth {
   /// initialize variables
   init({
     @required String apiBaseUrl,
-    @required String userNameParam,
-    @required String passwordParam,
-  }) {
+    bool store = false,
+  }) async {
     baseUrl = apiBaseUrl;
-    userName = userNameParam;
-    userPass = passwordParam;
+    if (store) {
+      prefs = await SharedPreferences.getInstance();
+    }
+    print(prefs);
   }
 
   ///------------------------------------
@@ -26,7 +28,8 @@ class UserAuth {
   ///------------------------------------
   /// return user data
   Future<dynamic> login({
-    @required String username,
+    @required String usernameVar,
+    @required String usernameVal,
     @required String password,
   }) async {
     try {
@@ -34,24 +37,34 @@ class UserAuth {
       var response = await http.post(
         baseUrl + "/user/login",
         body: {
-          userName: username,
-          userPass: password,
+          usernameVar: usernameVal,
+          'password': password,
         },
       );
-      print((response.request));
       // ---- Response ---- //
       var data = json.decode(response.body);
-      if (response.statusCode == 200) {
-        print(data['user']);
-      } else {
-        print(data);
+      if (prefs != null) {
+          prefs.setString('user', json.encode(data['user']));
       }
+      print(prefs.getString('user'));
+      var user1 = json.decode(prefs.getString('user'));
       return data['user'];
     } catch (e) {
       print('Error: ' + e.toString());
     }
   }
 
+  ///------------------------------------
+  /// User : Check
+  ///------------------------------------
+  /// return user data
+  Future<dynamic> loadUser() async {
+    if (prefs.getString('user') != null) {
+      return json.decode(prefs.getString('user'));
+    } else{
+      return null;
+    }
+  }
   ///------------------------------------
   /// User : Check
   ///------------------------------------
@@ -95,6 +108,7 @@ class UserAuth {
 
       // ---- Response ---- //
       if (response.statusCode == 200) {
+        prefs.clear();
         return true;
       } else {
         return false;

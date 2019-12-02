@@ -9,14 +9,13 @@ import 'package:user_auth/user_auth.dart';
 UserAuth user = new UserAuth();
 
 // ---- vars ---- //
-var activeUser, checkedUser, loggedOut = false;
+var activeUser, checkedUser, loadedUser, loggedOut = false;
 
 Future main() async {
   // ---- user init ---- //
   await user.init(
-    apiBaseUrl: 'https://mazeg.adortyyy.com/api/',
-    userNameParam: 'email',
-    passwordParam: 'password',
+    apiBaseUrl: 'https://mazeg.adortyyy.com/api',
+    store: true,
   );
 
   runApp(MyApp());
@@ -45,10 +44,24 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               RaisedButton(
+                child: Text('Load User'),
+                onPressed: () async {
+                  loadedUser = await user.loadUser();
+                  loggedOut = false;
+                  setState(() {});
+                },
+              ),
+              Text('loaded..'),
+              loadedUser != null
+                  ? Text(loadedUser.toString())
+                  : Text(user.placeHolder()),
+              Divider(height: 40),
+              RaisedButton(
                 child: Text('Login'),
                 onPressed: () async {
-                  activeUser = await user.login(
-                    username: 'vendor@test.com',
+                  activeUser = loadedUser = await user.login(
+                    usernameVar: 'email',
+                    usernameVal: 'vendor@test.com',
                     password: '123456',
                   );
                   loggedOut = false;
@@ -78,11 +91,11 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text('Logout'),
                 onPressed: () async {
-                  loggedOut =  await user.logout(
+                  loggedOut = await user.logout(
                     type: 'Bearer ',
                     token: activeUser['api_token'],
                   );
-                  activeUser = checkedUser = null;
+                  activeUser = checkedUser = loadedUser = null;
                   setState(() {});
                 },
               ),

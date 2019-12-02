@@ -1,7 +1,6 @@
-## 0.1.1
+## 0.2.0
 
-* Support it's very first methods
+* Now supports storing user into local_storage
 
 ## Next
-* Add Local Storage Instance
-* Upgrade things
+* Adding more feautres
