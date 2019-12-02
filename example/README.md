@@ -14,7 +14,7 @@ var activeUser, checkedUser, loadedUser, loggedOut = false;
 Future main() async {
   // ---- user init ---- //
   await user.init(
-    apiBaseUrl: 'https://mazeg.adortyyy.com/api',
+    apiBaseUrl: 'https://example.com/api',
     store: true,
   );
 
@@ -61,8 +61,8 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   activeUser = loadedUser = await user.login(
                     usernameVar: 'email',
-                    usernameVal: 'vendor@test.com',
-                    password: '123456',
+                    usernameVal: 'test@test.com',
+                    password: '12345678',
                   );
                   loggedOut = false;
                   setState(() {});

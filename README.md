@@ -24,16 +24,15 @@ UserAuth user = new UserAuth();
 
 // init
 await user.init(
-    apiBaseUrl: 'https://mazeg.adortyyy.com/api/',
-    userNameParam: 'email',
-    passwordParam: 'password',
+    apiBaseUrl: 'https://example.com/api',
+    store: true,
   );
 
 // login
 var activeUser = loadedUser = await user.login(
                     usernameVar: 'email',
-                    usernameVal: 'vendor@test.com',
-                    password: '123456',
+                    usernameVal: 'test@test.com',
+                    password: '12345678',
                   );
 
 // check
