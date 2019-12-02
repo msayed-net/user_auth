@@ -42,7 +42,7 @@ var checkedUser = await user.check(
                     token: activeUser['api_token'],
                   ); // change 'Bearer ' and api_token with your own parameter
 
-// check
+// logout
 var logout = await user.logout(
                     type: 'Bearer ',
                     token: activeUser['api_token'],

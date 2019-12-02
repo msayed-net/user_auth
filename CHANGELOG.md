@@ -1,4 +1,4 @@
-## 0.2.0
+## 0.2.1
 
 * Now supports storing user into local_storage
 
