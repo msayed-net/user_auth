@@ -29,6 +29,8 @@ await user.init(
     store: true,
   );
 
+// Note : change 'Bearer ' and api_token with your own parameters
+
 // login
 var activeUser = loadedUser = await user.login(
                     usernameVar: 'email',
@@ -40,7 +42,7 @@ var activeUser = loadedUser = await user.login(
 var checkedUser = await user.check(
                     type: 'Bearer ',
                     token: activeUser['api_token'],
-                  ); // change 'Bearer ' and api_token with your own parameter
+                  ); 
 
 // logout
 var logout = await user.logout(
@@ -50,12 +52,12 @@ var logout = await user.logout(
 
 // register
 Map form = {
-                    "email" : "test@test.com",
-                    "phone" : "00000000",
-                    "name" : "mohamed sayed",
-                    "password" : "1234567",
-                  };
-                  registeredUser = await user.register(form: form);
+            "email" : "test@test.com",
+            "phone" : "00000000",
+            "name" : "mohamed sayed",
+            "password" : "1234567",
+            };
+registeredUser = await user.register(form: form);
 ```
 
 ## change log

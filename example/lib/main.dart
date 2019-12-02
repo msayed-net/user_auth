@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:user_auth/user_auth.dart';
 
+// Note : change 'Bearer ' and api_token with your own parameters
 // ---- user instance ----- //
 UserAuth user = new UserAuth();
 

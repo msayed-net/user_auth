@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.1.0+1
 
 * new methods : `register`
 * performance optimization

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:user_auth/user_auth.dart';
 
+// Note : change 'Bearer ' and api_token with your own parameters
 // ---- user instance ----- //
 UserAuth user = new UserAuth();
 
@@ -92,10 +93,10 @@ class _MyAppState extends State<MyApp> {
                 child: Text('Register'),
                 onPressed: () async {
                   Map form = {
-                    "email" : "test@test.com",
-                    "phone" : "00000000",
-                    "name" : "mohamed sayed",
-                    "password" : "1234567",
+                    "email": "test@test.com",
+                    "phone": "00000000",
+                    "name": "mohamed sayed",
+                    "password": "1234567",
                   };
                   registeredUser = await user.register(form: form);
                   setState(() {});
