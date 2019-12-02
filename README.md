@@ -59,9 +59,9 @@ Map form = {
 ```
 
 ## change log
-v1.0.0
+### v1.0.0
 * methods : `login` `logout` `check` `loadUser`.
 * stores data into android:`prefs` | iOS:`defaults`.
-<br>v1.1.0
+### v1.1.0
 * new methods : `register`
 * performance optimization
