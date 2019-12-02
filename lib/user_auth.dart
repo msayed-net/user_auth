@@ -44,10 +44,8 @@ class UserAuth {
       // ---- Response ---- //
       var data = json.decode(response.body);
       if (prefs != null) {
-          prefs.setString('user', json.encode(data['user']));
+        prefs.setString('user', json.encode(data['user']));
       }
-      print(prefs.getString('user'));
-      var user1 = json.decode(prefs.getString('user'));
       return data['user'];
     } catch (e) {
       print('Error: ' + e.toString());
@@ -61,10 +59,11 @@ class UserAuth {
   Future<dynamic> loadUser() async {
     if (prefs.getString('user') != null) {
       return json.decode(prefs.getString('user'));
-    } else{
+    } else {
       return null;
     }
   }
+
   ///------------------------------------
   /// User : Check
   ///------------------------------------
@@ -81,11 +80,6 @@ class UserAuth {
 
       // ---- Response ---- //
       var data = json.decode(response.body);
-      if (response.statusCode == 200) {
-        print(data['user']);
-      } else {
-        print(data);
-      }
       return data['user'];
     } catch (e) {
       print('Error: ' + e.toString());
