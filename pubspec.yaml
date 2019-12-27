@@ -16,8 +16,6 @@ dependencies:
 
 flutter:
   plugin:
-    androidPackage: net.msayed.user_auth
-    pluginClass: UserAuthPlugin
     platforms:
       android:
         package: net.msayed.user_auth
