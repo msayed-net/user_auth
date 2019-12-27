@@ -61,9 +61,17 @@ registeredUser = await user.register(form: form);
 ```
 
 ## change log
-### v1.0.0
-* methods : `login` `logout` `check` `loadUser`.
-* stores data into android:`prefs` | iOS:`defaults`.
 ### v1.1.0
 * new methods : `register`
 * performance optimization
+### v1.0.0
+* methods : `login` `logout` `check` `loadUser`.
+* stores data into android:`prefs` | iOS:`defaults`.
+
+## Author
+
+* Mohamed Sayed [msayed.net](https://msayed.net)
+
+## my other plugins
+
+* [print_color](https://pub.dev/packages/print_color)
