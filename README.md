@@ -72,6 +72,7 @@ registeredUser = await user.register(form: form);
 
 * Mohamed Sayed [msayed.net](https://msayed.net)
 
-## my other plugins
+## My Plugins
 
+* [user_auth](https://pub.dev/packages/user_auth)
 * [print_color](https://pub.dev/packages/print_color)
