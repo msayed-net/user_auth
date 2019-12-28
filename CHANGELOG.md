@@ -1,5 +1,7 @@
-## 1.1.0+3
+## 1.1.1+1
+* Enhanced Documentation
 
+## 1.1.1
 * new methods : `register`
 * performance optimization
 

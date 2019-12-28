@@ -60,19 +60,13 @@ Map form = {
 registeredUser = await user.register(form: form);
 ```
 
-## change log
-### v1.1.0
-* new methods : `register`
-* performance optimization
-### v1.0.0
-* methods : `login` `logout` `check` `loadUser`.
-* stores data into android:`prefs` | iOS:`defaults`.
 
 ## Author
+[![Mohamed Sayed](./logo.png)](https://msayed.net)
+* [![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](http://linkedin.msayed.net) &nbsp; [![Fork](https://img.shields.io/github/forks/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/fork) &nbsp; [![Star](https://img.shields.io/github/stars/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/star) &nbsp; [![Watches](https://img.shields.io/github/watchers/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/) 
+* [![Plugin](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/user_auth) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/user_auth#-example-tab-)
 
-* Mohamed Sayed [msayed.net](https://msayed.net)
 
 ## My Plugins
-
 * [user_auth](https://pub.dev/packages/user_auth)
-* [print_color](https://pub.dev/packages/print_color)
+* [user_auth](https://pub.dev/packages/user_auth)
