@@ -1,3 +1,6 @@
+## 1.1.1+3
+* Enhanced Documentation
+
 ## 1.1.1+2
 * Enhanced Documentation
 
