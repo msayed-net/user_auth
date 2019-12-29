@@ -1,6 +1,6 @@
 name: user_auth
 description: Handy flutter plugin that help with user-backend-auth, written in pure dart code.
-version: 1.1.1+3
+version: 1.1.1+4
 homepage: https://github.com/MohamedSayed95/user_auth
 
 environment:
