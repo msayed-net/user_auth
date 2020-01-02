@@ -68,5 +68,6 @@ registeredUser = await user.register(form: form);
 
 
 ## My Plugins
+* [localize_and_translate](https://pub.dev/packages/localize_and_translate)
 * [print_color](https://pub.dev/packages/print_color)
 * [user_auth](https://pub.dev/packages/user_auth)
