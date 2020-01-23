@@ -63,7 +63,7 @@ registeredUser = await user.register(form: form);
 
 ## Author
 [![Mohamed Sayed](./logo.png)](https://msayed.net)
-* [![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](http://linkedin.msayed.net) &nbsp; [![Fork](https://img.shields.io/github/forks/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/fork) &nbsp; [![Star](https://img.shields.io/github/stars/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/stargazers) &nbsp; [![Watches](https://img.shields.io/github/watchers/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/) 
+* [![Fork](https://img.shields.io/github/forks/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/fork) &nbsp; [![Star](https://img.shields.io/github/stars/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/stargazers) &nbsp; [![Watches](https://img.shields.io/github/watchers/MohamedSayed95/user_auth?style=social)](https://github.com/MohamedSayed95/user_auth/) 
 * [![Plugin](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/user_auth) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/user_auth#-example-tab-)
 
 
