@@ -15,7 +15,7 @@ var activeUser, checkedUser, loadedUser, registeredUser, loggedOut = false;
 Future main() async {
   // ---- user init ---- //
   await user.init(
-    apiBaseUrl: 'https://mazeg.adortyyy.com/api',
+    apiBaseUrl: 'https://example.com/api',
     store: true,
   );
 

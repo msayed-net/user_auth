@@ -10,9 +10,11 @@ UserAuth user = new UserAuth();
 var activeUser, checkedUser, loadedUser, registeredUser, loggedOut = false;
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // ---- user init ---- //
   await user.init(
-    apiBaseUrl: 'https://mazeg.adortyyy.com/api',
+    apiBaseUrl: 'https://example.com/api',
     store: true,
   );
 

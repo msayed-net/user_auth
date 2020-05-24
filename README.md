@@ -1,12 +1,20 @@
 # user_auth
 
-Handy flutter plugin that help with user-backend-auth, written in pure dart code, in top of `http` and `shared_preferences`.
+Dart - Backend user auth helpe, with common methods
+
+[![Pub](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/user_auth)
+[![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/user_auth#-example-tab-)
+
+### Show some :heart: and star the repo
+
+[![Fork](https://img.shields.io/github/forks/msayed-net/user_auth?style=social)](https://github.com/msayed-net/user_auth/fork)
+[![Star](https://img.shields.io/github/stars/msayed-net/user_auth?style=social)](https://github.com/msayed-net/user_auth/stargazers)
+[![Watch](https://img.shields.io/github/watchers/msayed-net/user_auth?style=social)](https://github.com/msayed-net/user_auth/) 
 
 ## usage
 * import `package:user_auth/user_auth.dart`.
 * create instance from `UserAuth`.
 * init with `apiBaseUrl` and optional `store`: `true` | `false`, default is `false`, if `true` plugin will store user and retrieve with `loadUser()`.
-* initialize plugin with `api_base_url`.
 
 ## methods
 ##### you may change routes to fit your API
@@ -61,13 +69,16 @@ registeredUser = await user.register(form: form);
 ```
 
 
-## Author
-[![Mohamed Sayed](./logo.png)](https://msayed.net)
-* [![Fork](https://img.shields.io/github/forks/0x19950610/user_auth?style=social)](https://github.com/0x19950610/user_auth/fork) &nbsp; [![Star](https://img.shields.io/github/stars/0x19950610/user_auth?style=social)](https://github.com/0x19950610/user_auth/stargazers) &nbsp; [![Watches](https://img.shields.io/github/watchers/0x19950610/user_auth?style=social)](https://github.com/0x19950610/user_auth/) 
-* [![Plugin](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/user_auth) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/user_auth#-example-tab-)
+## Project Created & Maintained By
 
+### [![Mohamed Sayed](./logo.png)](https://msayed.net)
 
-## My Plugins
-* [localize_and_translate](https://pub.dev/packages/localize_and_translate)
-* [print_color](https://pub.dev/packages/print_color)
-* [user_auth](https://pub.dev/packages/user_auth)
+Software Engineer | In :heart: with Flutter
+
+# Donate
+
+> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> - [PayPal](https://www.paypal.me/msayednet/)
+
+## Note : All Contibutions Are Welcomed
