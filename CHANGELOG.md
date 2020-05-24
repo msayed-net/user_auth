@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Easy change routes
+
 ## 1.2.0
 
 * Enhanced Quality

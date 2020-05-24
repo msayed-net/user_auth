@@ -17,12 +17,11 @@ Dart - Backend user auth helpe, with common methods
 * init with `apiBaseUrl` and optional `store`: `true` | `false`, default is `false`, if `true` plugin will store user and retrieve with `loadUser()`.
 
 ## methods
-##### you may change routes to fit your API
-* `login` : default route `/user/login`, waits for `user` in response to return. 
-* `check` : default route `/user/details`, waits for `user` in response to return.  
-* `logout` : default route `/user/details`, return `true` | `false`.
-* `loadUser` : local method, return `user` if stored.
-* New`register` : default route `/user/register`, waits for `user` in response to return. 
+* `login` : waits for `user` in response to return. 
+* `check` : waits for `user` in response to return.  
+* `logout` : return `true` | `false`.
+* `loadUser` : return `user` if stored in prefs.
+* `register` : waits for `user` in response to return. 
 
 ## example
 ```dart
@@ -33,8 +32,12 @@ UserAuth user = new UserAuth();
 
 // init
 await user.init(
-    apiBaseUrl: 'https://example.com/api',
     store: true,
+    apiBaseUrl: 'https://example.com/api',
+    loginUrl: "/user/login",
+    registerUrl: "/user/register",
+    checkUrl: "/user/details",
+    logoutUrl: "/user/logout",
   );
 
 // Note : change 'Bearer ' and api_token with your own parameters

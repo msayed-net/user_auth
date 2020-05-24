@@ -17,6 +17,10 @@ Future main() async {
   await user.init(
     apiBaseUrl: 'https://example.com/api',
     store: true,
+    loginUrl: "/user/login",
+    registerUrl: "/user/register",
+    checkUrl: "/user/details",
+    logoutUrl: "/user/logout",
   );
 
   runApp(MyApp());

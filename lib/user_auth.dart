@@ -7,6 +7,10 @@ class UserAuth {
   // ? vars ? //
   String baseUrl;
   SharedPreferences prefs;
+  String loginUrl = "/user/login";
+  String registerUrl = "/user/register";
+  String checkUrl = "/user/details";
+  String logoutUrl = "/user/logout";
 
   ///------------------------------------
   /// User : init
@@ -15,12 +19,19 @@ class UserAuth {
   init({
     @required String apiBaseUrl,
     bool store = false,
+    String loginUrl = "/user/login",
+    String registerUrl = "/user/register",
+    String checkUrl = "/user/details",
+    String logoutUrl = "/user/logout",
   }) async {
     baseUrl = apiBaseUrl;
     if (store) {
       prefs = await SharedPreferences.getInstance();
     }
-    print(prefs);
+    loginUrl = loginUrl;
+    registerUrl = registerUrl;
+    checkUrl = checkUrl;
+    logoutUrl = logoutUrl;
   }
 
   ///------------------------------------
@@ -35,7 +46,7 @@ class UserAuth {
     try {
       // ---- API Call ---- //
       var response = await http.post(
-        baseUrl + "/user/login",
+        baseUrl + loginUrl,
         body: {
           usernameVar: usernameVal,
           'password': password,
@@ -53,14 +64,14 @@ class UserAuth {
   }
 
   ///------------------------------------
-  /// User : Login
+  /// User : Register
   ///------------------------------------
   /// return user data
   Future<dynamic> register({@required Map form}) async {
     try {
       // ---- API Call ---- //
       var response = await http.post(
-        baseUrl + "/user/register",
+        baseUrl + registerUrl,
         body: form,
       );
       // ---- Response ---- //
@@ -96,7 +107,7 @@ class UserAuth {
   }) async {
     try {
       // ---- API Call ---- //
-      var response = await http.post(baseUrl + "/user/details", headers: {
+      var response = await http.post(baseUrl + checkUrl, headers: {
         'Authorization': type + token,
       });
 
@@ -117,7 +128,7 @@ class UserAuth {
   }) async {
     try {
       // ---- API Call ---- //
-      var response = await http.post(baseUrl + "/user/logout", headers: {
+      var response = await http.post(baseUrl + logoutUrl, headers: {
         'Authorization': type + token,
       });
 
