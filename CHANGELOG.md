@@ -1,3 +1,7 @@
+## 1.2.2
+
+* Change Package Template
+
 ## 1.2.1
 
 * Easy change routes
