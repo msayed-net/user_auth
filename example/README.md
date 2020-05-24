@@ -14,9 +14,11 @@ var activeUser, checkedUser, loadedUser, registeredUser, loggedOut = false;
 
 Future main() async {
   // ---- user init ---- //
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   await user.init(
     apiBaseUrl: 'https://example.com/api',
     store: true,
+    prefs: prefs, // need if store: true
     loginUrl: "/user/login",
     registerUrl: "/user/register",
     checkUrl: "/user/details",

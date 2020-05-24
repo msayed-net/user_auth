@@ -1,13 +1,10 @@
 name: user_auth
 description: Dart - Backend user auth helpe, with common methods like login and register
-version: 1.2.1
+version: 1.2.2
 homepage: https://github.com/MohamedSayed95/user_auth
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-  shared_preferences: ^0.5.4+6
   http: ^0.12.0+2

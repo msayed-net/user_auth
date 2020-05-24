@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:user_auth/user_auth.dart';
 
@@ -13,9 +14,11 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // ---- user init ---- //
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   await user.init(
     apiBaseUrl: 'https://example.com/api',
     store: true,
+    prefs: prefs, // need if store: true
     loginUrl: "/user/login",
     registerUrl: "/user/register",
     checkUrl: "/user/details",

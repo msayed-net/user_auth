@@ -14,7 +14,7 @@ Dart - Backend user auth helpe, with common methods
 ## usage
 * import `package:user_auth/user_auth.dart`.
 * create instance from `UserAuth`.
-* init with `apiBaseUrl` and optional `store`: `true` | `false`, default is `false`, if `true` plugin will store user and retrieve with `loadUser()`.
+* init with `apiBaseUrl` and other parameters.
 
 ## methods
 * `login` : waits for `user` in response to return. 
@@ -31,9 +31,11 @@ import 'package:user_auth/user_auth.dart';
 UserAuth user = new UserAuth();
 
 // init
-await user.init(
-    store: true,
+SharedPreferences prefs = await SharedPreferences.getInstance();
+  await user.init(
     apiBaseUrl: 'https://example.com/api',
+    store: true,
+    prefs: prefs, // need if store: true
     loginUrl: "/user/login",
     registerUrl: "/user/register",
     checkUrl: "/user/details",

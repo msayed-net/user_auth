@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UserAuth {
   // ? vars ? //
   String baseUrl;
-  SharedPreferences prefs;
+  var _prefs;
   String loginUrl = "/user/login";
   String registerUrl = "/user/register";
   String checkUrl = "/user/details";
@@ -17,16 +15,17 @@ class UserAuth {
   ///------------------------------------
   /// initialize variables
   init({
-    @required String apiBaseUrl,
+    String apiBaseUrl,
     bool store = false,
+    prefs,
     String loginUrl = "/user/login",
     String registerUrl = "/user/register",
     String checkUrl = "/user/details",
     String logoutUrl = "/user/logout",
   }) async {
     baseUrl = apiBaseUrl;
-    if (store) {
-      prefs = await SharedPreferences.getInstance();
+    if (store && prefs != null) {
+      _prefs = prefs;
     }
     loginUrl = loginUrl;
     registerUrl = registerUrl;
@@ -39,9 +38,9 @@ class UserAuth {
   ///------------------------------------
   /// return user data
   Future<dynamic> login({
-    @required String usernameVar,
-    @required String usernameVal,
-    @required String password,
+    String usernameVar,
+    String usernameVal,
+    String password,
   }) async {
     try {
       // ---- API Call ---- //
@@ -54,8 +53,8 @@ class UserAuth {
       );
       // ---- Response ---- //
       var data = json.decode(response.body);
-      if (prefs != null) {
-        prefs.setString('user', json.encode(data['user']));
+      if (_prefs != null) {
+        _prefs.setString('user', json.encode(data['user']));
       }
       return data['user'];
     } catch (e) {
@@ -67,7 +66,7 @@ class UserAuth {
   /// User : Register
   ///------------------------------------
   /// return user data
-  Future<dynamic> register({@required Map form}) async {
+  Future<dynamic> register({Map form}) async {
     try {
       // ---- API Call ---- //
       var response = await http.post(
@@ -76,8 +75,8 @@ class UserAuth {
       );
       // ---- Response ---- //
       var data = json.decode(response.body);
-      if (prefs != null) {
-        prefs.setString('user', json.encode(data['user']));
+      if (_prefs != null) {
+        _prefs.setString('user', json.encode(data['user']));
       }
       return data['user'];
     } catch (e) {
@@ -90,8 +89,8 @@ class UserAuth {
   ///------------------------------------
   /// return user data
   Future<dynamic> loadUser() async {
-    if (prefs.getString('user') != null) {
-      return json.decode(prefs.getString('user'));
+    if (_prefs.getString('user') != null) {
+      return json.decode(_prefs.getString('user'));
     } else {
       return null;
     }
@@ -102,8 +101,8 @@ class UserAuth {
   ///------------------------------------
   /// return user data
   Future<dynamic> check({
-    @required String type,
-    @required String token,
+    String type,
+    String token,
   }) async {
     try {
       // ---- API Call ---- //
@@ -123,8 +122,8 @@ class UserAuth {
   /// User : Logout
   ///------------------------------------
   Future<dynamic> logout({
-    @required String type,
-    @required String token,
+    String type,
+    String token,
   }) async {
     try {
       // ---- API Call ---- //
@@ -134,7 +133,7 @@ class UserAuth {
 
       // ---- Response ---- //
       if (response.statusCode == 200) {
-        prefs.clear();
+        _prefs.clear();
         return true;
       } else {
         return false;
