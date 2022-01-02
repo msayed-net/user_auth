@@ -72,18 +72,3 @@ Map form = {
             };
 registeredUser = await user.register(form: form);
 ```
-
-
-## Project Created & Maintained By
-
-### [![Mohamed Sayed](./logo.png)](https://msayed.net)
-
-Software Engineer | In :heart: with Flutter
-
-# Donate
-
-> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
->
-> - [PayPal](https://www.paypal.me/msayednet/)
-
-## Note : All Contibutions Are Welcomed
